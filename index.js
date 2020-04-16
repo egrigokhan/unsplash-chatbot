@@ -36,7 +36,7 @@ app.get('/zoomverify/verifyzoom.html', (req, res) => {
   res.send(process.env.zoom_verification_code)
 })
 
-app.post('/unsplash', (req, res) => {
+app.post('/testibule', (req, res) => {
   console.log(req.body)
   res.send('Chat received')
 })
