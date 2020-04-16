@@ -39,7 +39,7 @@ app.get('/zoomverify/verifyzoom.html', (req, res) => {
 app.post('/testibule', (req, res) => {
   getChatbotToken()
   
-  console.log(req.body)
+  console.log(req.body["payload"])
   
   function getChatbotToken () {
     request({
