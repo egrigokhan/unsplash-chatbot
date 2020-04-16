@@ -39,6 +39,8 @@ app.get('/zoomverify/verifyzoom.html', (req, res) => {
 app.post('/testibule', (req, res) => {
   getChatbotToken()
   
+  console.log(req.body)
+  
   function getChatbotToken () {
     request({
       url: `https://api.zoom.us/oauth/token?grant_type=client_credentials`,
