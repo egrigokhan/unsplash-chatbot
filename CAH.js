@@ -1,3 +1,7 @@
+module.exports = {
+  class: Game
+}
+
 class Game {
 
   GAME_CHATBOT_STATE_DICT = {}
