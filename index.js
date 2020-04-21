@@ -42,7 +42,7 @@ function createGame(BODY) {
   console.log("CREATE")
   if(GAME != null) {
     // TOKENIZE COMMAND
-    TOKENS = BODY.payload.cmd // /start <NUMBER OF PLAYERS>
+    TOKENS = BODY.payload.cmd.split(" ") // /start <NUMBER OF PLAYERS>
 
     GAME = new Game(TOKENS[1]);
 
@@ -62,7 +62,7 @@ function play(BODY) {
   console.log("PLAY")
   if(GAME != null) {
     // TOKENIZE COMMAND
-    TOKENS = BODY.payload.cmd // /play <CARD 1 INDEX> <CARD 2 INDEX> ... 
+    TOKENS = BODY.payload.cmd.split(" ") // /play <CARD 1 INDEX> <CARD 2 INDEX> ... 
 
     PLAYED_CARDS = []
 
@@ -79,7 +79,7 @@ function vote(BODY) {
   console.log("VOTE")
   if(GAME != null) {
     // TOKENIZE COMMAND
-    TOKENS = BODY.payload.cmd // /vote <DECK 1 INDEX> ... 
+    TOKENS = BODY.payload.cmd.split(" ") // /vote <DECK 1 INDEX> ... 
 
     // JOIN THE CREATING USER TO THE GAME
     GAME.voteFunniest(TOKENS[1], BODY.payload)
@@ -142,7 +142,7 @@ function getChatbotToken () {
 app.post('/testibule', (req, res) => {
 
   // TOKENIZE COMMAND
-  TOKENS = req.body.payload.cmd
+  TOKENS = req.body.payload.cmd.split(" ")
   
   console.log(req.body["payload"])
 
