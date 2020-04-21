@@ -503,9 +503,10 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + chatbotToken
       }
-    }, (error, httpResponse, body) => {
-      console.log("RESPONSE: " + body)
-      if (error) {
+    }, (success, httpResponse, body) => {
+      if (success) {
+        console.log(body)
+      } else {
         console.log("error")
         console.log("Refreshing token...")
         request({
@@ -526,8 +527,6 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
           }
         })
         console.log('Error sending chat.', error)
-      } else {
-        console.log("NON-ERROR ERROR: " + body)
       }
     })
   }
