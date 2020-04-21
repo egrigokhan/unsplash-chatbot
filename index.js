@@ -527,7 +527,7 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
         })
         console.log('Error sending chat.', error)
       } else {
-        console.log(body)
+        console.log("NON-ERROR ERROR: " + body)
       }
     })
   }
