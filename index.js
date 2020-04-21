@@ -36,12 +36,61 @@ app.get('/zoomverify/verifyzoom.html', (req, res) => {
   res.send(process.env.zoom_verification_code)
 })
 
-app.post('/testibule', (req, res) => {
-  getChatbotToken()
-  
-  console.log(req.body["payload"])
-  
-  function getChatbotToken () {
+var GAME;
+
+function createGame(BODY) {
+  console.log("CREATE")
+  if(GAME != null) {
+    // TOKENIZE COMMAND
+    TOKENS = BODY.payload.cmd // /start <NUMBER OF PLAYERS>
+
+    GAME = new Game(TOKENS[1]);
+
+    // JOIN THE CREATING USER TO THE GAME
+    GAME.join(BODY.payload, BODY.payload)
+  }
+}
+
+function joinUserToGame(BODY) {
+  console.log("JOIN")
+  if(GAME != null) {
+    GAME.join(BODY.payload)
+  }
+}
+
+function play(BODY) {
+  console.log("PLAY")
+  if(GAME != null) {
+    // TOKENIZE COMMAND
+    TOKENS = BODY.payload.cmd // /play <CARD 1 INDEX> <CARD 2 INDEX> ... 
+
+    PLAYED_CARDS = []
+
+    for(var i = 1; i < TOKENS.length; i+=1) {
+      PLAYED_CARDS.push(TOKENS[i])
+    }
+
+    // JOIN THE CREATING USER TO THE GAME
+    GAME.playCard(PLAYED_CARDS, BODY.payload)
+  }
+}
+
+function vote(BODY) {
+  console.log("VOTE")
+  if(GAME != null) {
+    // TOKENIZE COMMAND
+    TOKENS = BODY.payload.cmd // /vote <DECK 1 INDEX> ... 
+
+    // JOIN THE CREATING USER TO THE GAME
+    GAME.voteFunniest(TOKENS[1], BODY.payload)
+  }
+}
+
+function exitGame(BODY) {
+  GAME = null
+}
+
+function getChatbotToken () {
     request({
       url: `https://api.zoom.us/oauth/token?grant_type=client_credentials`,
       method: 'POST',
@@ -58,7 +107,7 @@ app.post('/testibule', (req, res) => {
     })
   }
 
-  function sendChat (chatbotToken) {
+  function sendChat(BODY, chatbotToken) {
     request({
       url: 'https://api.zoom.us/v2/im/chat/messages',
       method: 'POST',
@@ -89,6 +138,24 @@ app.post('/testibule', (req, res) => {
       }
     })
   }
+
+app.post('/testibule', (req, res) => {
+  getChatbotToken()
+
+  // TOKENIZE COMMAND
+  TOKENS = req.body.payload.cmd
+  
+  console.log(req.body["payload"])
+
+  if(TOKENS[0] == "start") {
+    createGame(req.body)
+  } else if(TOKENS[0] == "join") {
+    joinUserToGame(req.body)
+  } else if(TOKENS[0] == "play") {
+    play(req.body)
+  } else if(TOKENS[0] == "vote") {
+    vote(req.body)
+  } 
 })
 
 app.post('/deauthorize', (req, res) => {
