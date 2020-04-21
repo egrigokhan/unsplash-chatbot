@@ -504,7 +504,7 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
         'Authorization': 'Bearer ' + chatbotToken
       }
     }, (error, httpResponse, body) => {
-      if (!error) {
+      if (!error && body.code != 7010) {
         console.log("Chat successful...")
         console.log(body)
       } else {
