@@ -405,13 +405,13 @@ class Game {
       this.CURRENT_PLAYED_CARDS[USER_INDEX] = CARD_INDICES
       this.CURRENTLY_PLAYED_NUMBER_OF_PLAYERS += 1
 
-      this.sendMessage("You have chosen " + CARD_INDICES, USER["payload"])
+      this.sendMessage("You have chosen " + CARD_INDICES, USER)
 
       if(this.CURRENTLY_PLAYED_NUMBER_OF_PLAYERS >= this.NUMBER_OF_PLAYERS - 1) {
          this.startJudgingRound()
       }
     } else {
-      this.sendMessage("You are the Czar, you can't play at this point.", USER["payload"])
+      this.sendMessage("You are the Czar, you can't play at this point.", USER)
     }
   }
 
@@ -426,19 +426,19 @@ class Game {
   }
 
   sendCzarMessage(USER) {
-    this.sendMessage("You are the Czar for this round.", USER["payload"])
-    this.sendMessage("Wait until everyone is finished and then pick the funniest combination.", USER["payload"])
+    this.sendMessage("You are the Czar for this round.", USER)
+    this.sendMessage("Wait until everyone is finished and then pick the funniest combination.", USER)
   }
 
   sendPlayerMessage(USER, INDEX) {
-    this.sendMessage("YOUR DECK:", USER["payload"])
+    this.sendMessage("YOUR DECK:", USER)
     this.printDeckForUser(USER, INDEX)
-    this.sendMessage("Please select the funniest card(s).", USER["payload"])
+    this.sendMessage("Please select the funniest card(s).", USER)
   }
 
   printDeckForUser(USER, INDEX) {
     for(var i = 0; i < this.USERS_DECKS[INDEX].length; i++) {
-      this.sendMessage((i) + ":  " + this.USERS_DECKS[INDEX][i], USER["payload"])
+      this.sendMessage((i) + ":  " + this.USERS_DECKS[INDEX][i], USER)
     }
   }
  
