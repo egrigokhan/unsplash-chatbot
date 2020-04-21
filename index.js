@@ -485,6 +485,8 @@ class Game {
         console.log('Error getting chatbot_token from Zoom.', error)
       } else {
         body = JSON.parse(body)
+        console.log(body)
+        console.log(USER)
         sendChat(USER.payload.toJid, USER.payload.accountId, head, text, body.accessToken)
       }
     })
@@ -515,6 +517,7 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
         'Authorization': 'Bearer ' + chatbotToken
       }
     }, (error, httpResponse, body) => {
+      console.log("RESPONSE: " + body)
       if (error) {
         console.log('Error sending chat.', error)
       } else {
