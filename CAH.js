@@ -984,5 +984,5 @@ function white() {
 }
 
 module.exports = {
-  class: Game
+  Game: Game
 }
