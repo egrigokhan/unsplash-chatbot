@@ -49,7 +49,7 @@ function createGame(BODY) {
     // TOKENIZE COMMAND
     TOKENS = BODY.payload.cmd.split(" ") // /start <NUMBER OF PLAYERS>
 
-    GAME = new CAH.Game(TOKENS[1]);
+    GAME = new (CAH.Game)(TOKENS[1], BODY);
 
     // JOIN THE CREATING USER TO THE GAME
     GAME.join(BODY.payload, BODY.payload)
