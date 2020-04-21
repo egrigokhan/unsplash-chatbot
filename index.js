@@ -485,7 +485,7 @@ class Game {
         console.log('Error getting chatbot_token from Zoom.', error)
       } else {
         body = JSON.parse(body)
-        sendChat(USER.toJid, USER.accountId, head, text, body.accessToken)
+        sendChat(USER.payload.toJid, USER.payload.accountId, head, text, body.accessToken)
       }
     })
   }
