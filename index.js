@@ -432,15 +432,16 @@ class Game {
   }
 
   sendPlayerMessage(USER, INDEX) {
-    this.sendMessage("YOUR DECK:", USER)
-    this.printDeckForUser(USER, INDEX)
+    this.sendMessage("YOUR DECK:\n" + this.printDeckForUser(USER, INDEX), USER)
     this.sendMessage("Please select the funniest card(s).", USER)
   }
 
   printDeckForUser(USER, INDEX) {
+    var STRING = ""
     for(var i = 0; i < this.USERS_DECKS[INDEX].length; i++) {
-      this.sendMessage((i) + ":  " + this.USERS_DECKS[INDEX][i], USER)
+      STRING += (i) + ":  " + this.USERS_DECKS[INDEX][i], USER) + "\n"
     }
+    return STRING
   }
  
   clearOut() {
