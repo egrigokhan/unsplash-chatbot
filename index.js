@@ -3,8 +3,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 
-const CAH = require("./CAH")
 const CAH_CARDS = require("./CAH_cards")
+const CAH = require("./CAH")
+const Game = CAH.Game
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -49,7 +50,7 @@ function createGame(BODY) {
     // TOKENIZE COMMAND
     TOKENS = BODY.payload.cmd.split(" ") // /start <NUMBER OF PLAYERS>
 
-    GAME = new (CAH.Game)(TOKENS[1], BODY);
+    GAME = new Game(TOKENS[1], BODY);
 
     // JOIN THE CREATING USER TO THE GAME
     GAME.join(BODY.payload, BODY.payload)
