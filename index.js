@@ -270,7 +270,7 @@ class Game {
   	    this.sendMessage("Starting game...")
         this.startRound()
   	  } else if(this.USERS.length < this.NUMBER_OF_PLAYERS) {
-        this.sendMessage("Waiting for " + (this.USERS.length - this.NUMBER_OF_PLAYERS) + " player(s)")
+        this.sendMessage("Waiting for " + (this.NUMBER_OF_PLAYERS - this.USERS.length) + " player(s)")
       } else {
     		this.sendMessage("You cannot join anymore, the desired number of players have been reached.")
   	  }
@@ -503,9 +503,10 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + chatbotToken
       }
-    }, (success, httpResponse, body) => {
-      if (success) {
+    }, (error, httpResponse, body) => {
+      if (!error) {
         console.log("Chat successful...")
+        print(body)
       } else {
         console.log("Refreshing token...")
         request({
