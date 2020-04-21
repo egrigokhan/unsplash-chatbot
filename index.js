@@ -241,7 +241,7 @@ class Game {
   constructor(NUMBER_OF_PLAYERS = 3, GAME_CHATBOT_STATE_DICT = {}) {
   	this.NUMBER_OF_PLAYERS = NUMBER_OF_PLAYERS
     this.GAME_CHATBOT_STATE_DICT = GAME_CHATBOT_STATE_DICT
-    this.GAME_CHATBOT_STATE_DICT.userJid = this.GAME_CHATBOT_STATE_DICT.toJid
+    this.GAME_CHATBOT_STATE_DICT.payload.userJid = this.GAME_CHATBOT_STATE_DICT.payload.toJid
     this.createDecks()
     this.createScoreboard()
 
