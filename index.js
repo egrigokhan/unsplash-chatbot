@@ -473,7 +473,7 @@ class Game {
     return -1
   }
 
-  sendMessage(head = "", text, USER = this.GAME_CHATBOT_STATE_DICT) {
+  sendMessage(text, USER = this.GAME_CHATBOT_STATE_DICT) {
     request({
       url: `https://api.zoom.us/oauth/token?grant_type=client_credentials`,
       method: 'POST',
@@ -487,7 +487,7 @@ class Game {
         body = JSON.parse(body)
         console.log(body)
         console.log(USER)
-        sendChat(USER.payload.toJid, USER.payload.accountId, head, text, body.access_token)
+        sendChat(USER.payload.toJid, USER.payload.accountId, "", text, body.access_token)
       }
     })
   }
