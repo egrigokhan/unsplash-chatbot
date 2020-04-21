@@ -505,9 +505,8 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
       }
     }, (success, httpResponse, body) => {
       if (success) {
-        console.log(body)
+        console.log("Chat successful...")
       } else {
-        console.log("error")
         console.log("Refreshing token...")
         request({
           url: `https://api.zoom.us/oauth/token?grant_type=client_credentials`,
@@ -521,8 +520,6 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
           } else {
             console.log('Succesfully obtained the chatbot token from Zoom...')
             body = JSON.parse(body)
-            console.log(body)
-            console.log(USER)
             CHATBOT_TOKEN = body.access_token
             sendChat(toJid, accountId, head, text, body.access_token)
           }
