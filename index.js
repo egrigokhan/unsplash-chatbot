@@ -40,7 +40,9 @@ var GAME;
 
 function createGame(BODY) {
   console.log("CREATE")
-  if(GAME != null) {
+  if(GAME == null) {
+    console.log("Creating game...")
+    
     // TOKENIZE COMMAND
     TOKENS = BODY.payload.cmd.split(" ") // /start <NUMBER OF PLAYERS>
 
