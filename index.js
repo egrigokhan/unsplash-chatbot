@@ -114,15 +114,15 @@ function getChatbotToken () {
       json: true,
       body: {
         'robot_jid': process.env.zoom_bot_jid,
-        'to_jid': req.body.payload.toJid,
-        'account_id': req.body.payload.accountId,
+        'to_jid': BODY.payload.toJid,
+        'account_id': BODY.payload.accountId,
         'content': {
           'head': {
             'text': 'Unsplash'
           },
           'body': [{
             'type': 'message',
-            'text': 'You sent ' + req.body.payload.cmd
+            'text': 'You sent ' + BODY.payload.cmd
           }]
         }
       },
@@ -140,7 +140,6 @@ function getChatbotToken () {
   }
 
 app.post('/testibule', (req, res) => {
-  getChatbotToken()
 
   // TOKENIZE COMMAND
   TOKENS = req.body.payload.cmd
