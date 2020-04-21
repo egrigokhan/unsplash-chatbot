@@ -474,24 +474,11 @@ class Game {
   }
 
   sendMessage(text, USER = this.GAME_CHATBOT_STATE_DICT) {
-    request({
-      url: `https://api.zoom.us/oauth/token?grant_type=client_credentials`,
-      method: 'POST',
-      headers: {
-        'Authorization': 'Basic ' + Buffer.from(process.env.zoom_client_id + ':' + process.env.zoom_client_secret).toString('base64')
-      }
-    }, (error, httpResponse, body) => {
-      if (error) {
-        console.log('Error getting chatbot_token from Zoom.', error)
-      } else {
-        body = JSON.parse(body)
-        console.log(body)
-        console.log(USER)
-        sendChat(USER.payload.toJid, USER.payload.accountId, "Cards Against Boredom", text, body.access_token)
-      }
-    })
+    sendChat(USER.payload.toJid, USER.payload.accountId, "Cards Against Boredom", text, CHATBOT_TOKEN)
   }
 }
+
+var CHATBOT_TOKEN = "";
 
 function sendChat(toJid, accountId, head, text, chatbotToken) {
     request({
@@ -519,6 +506,25 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
     }, (error, httpResponse, body) => {
       console.log("RESPONSE: " + body)
       if (error) {
+        console.log("error")
+        console.log("Refreshing token...")
+        request({
+          url: `https://api.zoom.us/oauth/token?grant_type=client_credentials`,
+          method: 'POST',
+          headers: {
+            'Authorization': 'Basic ' + Buffer.from(process.env.zoom_client_id + ':' + process.env.zoom_client_secret).toString('base64')
+          }
+        }, (error, httpResponse, body) => {
+          if (error) {
+            console.log('Error getting chatbot_token from Zoom.', error)
+          } else {
+            body = JSON.parse(body)
+            console.log(body)
+            console.log(USER)
+            CHATBOT_TOKEN = body.access_token
+            sendChat(toJid, accountId, head, text, body.access_token)
+          }
+        })
         console.log('Error sending chat.', error)
       } else {
         console.log(body)
