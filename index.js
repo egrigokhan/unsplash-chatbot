@@ -506,7 +506,7 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
     }, (error, httpResponse, body) => {
       if (!error) {
         console.log("Chat successful...")
-        print(body)
+        console.log(body)
       } else {
         console.log("Refreshing token...")
         request({
