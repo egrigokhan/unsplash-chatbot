@@ -439,7 +439,7 @@ class Game {
   printDeckForUser(USER, INDEX) {
     var STRING = ""
     for(var i = 0; i < this.USERS_DECKS[INDEX].length; i++) {
-      STRING += (i) + ":  " + this.USERS_DECKS[INDEX][i], USER) + "\n"
+      STRING += ((i) + ":  " + this.USERS_DECKS[INDEX][i], USER) + "\n")
     }
     return STRING
   }
