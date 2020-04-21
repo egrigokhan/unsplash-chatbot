@@ -3,8 +3,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 
-const CAH = require("CAH.js")
-const CAH_CARDS = require("CAH_cards.js")
+const CAH = require("/CAH.js")
+const CAH_CARDS = require("/CAH_cards.js")
 
 const app = express()
 const port = process.env.PORT || 4000
