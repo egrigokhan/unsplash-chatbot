@@ -120,7 +120,7 @@ function getChatbotToken () {
       json: true,
       body: {
         'robot_jid': process.env.zoom_bot_jid,
-        'to_jid': BODY.payload.toJid,
+        'to_jid': BODY.payload.userJid, // TRYING SOMETHING
         'account_id': BODY.payload.accountId,
         'content': {
           'head': {
@@ -474,7 +474,7 @@ class Game {
   }
 
   sendMessage(text, USER = this.GAME_CHATBOT_STATE_DICT) {
-    sendChat(USER.payload.toJid, USER.payload.accountId, "Cards Against Boredom", text, CHATBOT_TOKEN)
+    sendChat(USER.payload.userJid, USER.payload.accountId, "Cards Against Boredom", text, CHATBOT_TOKEN)
   }
 }
 
