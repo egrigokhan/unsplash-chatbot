@@ -487,7 +487,7 @@ class Game {
         body = JSON.parse(body)
         console.log(body)
         console.log(USER)
-        sendChat(USER.payload.toJid, USER.payload.accountId, "", text, body.access_token)
+        sendChat(USER.payload.toJid, USER.payload.accountId, "Cards Against Boredom", text, body.access_token)
       }
     })
   }
