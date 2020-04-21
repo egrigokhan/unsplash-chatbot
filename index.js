@@ -53,14 +53,14 @@ function createGame(BODY) {
     GAME = new Game(TOKENS[1], BODY);
 
     // JOIN THE CREATING USER TO THE GAME
-    GAME.join(BODY.payload, BODY.payload)
+    GAME.join(BODY)
   }
 }
 
 function joinUserToGame(BODY) {
   console.log("JOIN")
   if(GAME != null) {
-    GAME.join(BODY.payload)
+    GAME.join(BODY)
   }
 }
 
