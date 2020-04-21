@@ -1,3 +1,5 @@
+const CAH_CARDS = require("./CAH_cards")
+
 class Game {
 
   GAME_CHATBOT_STATE_DICT = {}
@@ -25,7 +27,7 @@ class Game {
     this.createDecks()
     this.createScoreboard()
 
-    this.ENTIRE_DECK = getDeck()
+    this.ENTIRE_DECK = CAH_CARDS.getDeck()
   }
   
   createScoreboard() {
