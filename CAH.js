@@ -1,7 +1,3 @@
-module.exports = {
-  class: Game
-}
-
 class Game {
 
   GAME_CHATBOT_STATE_DICT = {}
@@ -985,4 +981,8 @@ function white() {
    "Yeast",
    "Zeus's sexual appetites",
   ];
+}
+
+module.exports = {
+  class: Game
 }
