@@ -519,6 +519,7 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
           if (error) {
             console.log('Error getting chatbot_token from Zoom.', error)
           } else {
+            console.log('Succesfully obtained the chatbot token from Zoom...')
             body = JSON.parse(body)
             console.log(body)
             console.log(USER)
@@ -526,7 +527,6 @@ function sendChat(toJid, accountId, head, text, chatbotToken) {
             sendChat(toJid, accountId, head, text, body.access_token)
           }
         })
-        console.log('Error sending chat.', error)
       }
     })
   }
