@@ -77,7 +77,7 @@ function play(BODY) {
     }
 
     // JOIN THE CREATING USER TO THE GAME
-    GAME.playCard(PLAYED_CARDS, BODY.payload)
+    GAME.playCard(PLAYED_CARDS, BODY)
   }
 }
 
