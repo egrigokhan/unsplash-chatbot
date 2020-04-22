@@ -302,6 +302,9 @@ class Game {
 
     // PICK BLACK CARD
     this.CURRENT_BLACK_CARD = this.getRandomBlackCard()
+    
+    // SEND BLACK CARD
+    this.sendMessage(this.CURRENT_BLACK_CARD)
 
     // NOTIFY PEOPLE
     this.notifyPeople()
