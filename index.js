@@ -472,6 +472,8 @@ class Game {
   }
 
   getIndexOfUser(USER) {
+    console.log("*** USERS ***")
+    console.log(this.USERS)
     for(var i = 0; i < this.NUMBER_OF_PLAYERS; i++) {
       if(this.USERS[i]["payload"]["userName"] == USER["payload"]["userName"]) {
         return i
