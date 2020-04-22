@@ -326,6 +326,8 @@ class Game {
   }
 
   voteFunniest(CARD_INDEX, USER) {
+    console.log(USER)
+    console.log(this.USERS)
     if(this.getIndexOfUser(USER) == this.CURRENT_CZAR_INDEX) {
       this.sendMessage("The Czar selected [" + CARD_INDEX + "]")
 
