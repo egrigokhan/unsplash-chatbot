@@ -468,7 +468,7 @@ class Game {
 
   getIndexOfUser(USER) {
     for(var i = 0; i < this.NUMBER_OF_PLAYERS; i++) {
-      if(this.USERS[i]["payload"]["username"] == USER["payload"]["username"]) {
+      if(this.USERS[i]["payload"]["userName"] == USER["payload"]["userName"]) {
         return i
       }
     }
