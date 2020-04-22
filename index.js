@@ -265,7 +265,7 @@ class Game {
   join(user) {
   	if(this.USERS.length < this.NUMBER_OF_PLAYERS) {
   	  this.USERS.push(user)
-  	  this.sendMessage(user["payload"]["username"] + " has joined the game.")
+  	  this.sendMessage(user["payload"]["userName"] + " has joined the game.")
 
   	  if(this.USERS.length == this.NUMBER_OF_PLAYERS) {
   	    this.sendMessage("Starting game...")
@@ -357,7 +357,7 @@ class Game {
     this.sendMessage("  ")
     this.sendMessage("SCOREBOARD")
     for(var i = 0; i < this.NUMBER_OF_PLAYERS; i++) {
-      this.sendMessage(this.USERS[i]["payload"]["username"] + " -> " + this.USERS_SCORES[i])
+      this.sendMessage(this.USERS[i]["payload"]["userName"] + " -> " + this.USERS_SCORES[i])
     }
   }
 
