@@ -317,9 +317,7 @@ class Game {
     this.shufflePlayedCards()
 
     // PRINT THE PLAYED CARDS
-    this.printPlayedCardsForAll()
-
-    this.sendMessage("Card Czar will now type in the index of the funniest combination.")
+    this.sendMessage(this.printPlayedCardsForAll())
   }
 
   voteFunniest(CARD_INDEX, USER) {
@@ -366,20 +364,21 @@ class Game {
   }
 
   printPlayedCardsForAll() {
-    console.log("HERE")
+    STRING = "PLAYED CARDS\n"
     for(var i = 0; i < this.CURRENT_PLAYED_CARDS.length; i++) {
       if(this.CURRENT_INDICES[i] != this.CURRENT_CZAR_INDEX) {
         for(var j = 0; j < this.CURRENT_PLAYED_CARDS[i].length; j++) {
           var C = this.USERS_DECKS[this.CURRENT_INDICES[i]][this.CURRENT_PLAYED_CARDS[i][j]]
           if(j == 0) {
-            this.sendMessage((i) + ":  " + C)
+            STRING += (i) + ":  " + C + "\n"
           } else {
-            this.sendMessage("    " + C)
+            STRING += "    " + C + "\n"
           }
         }
-        this.sendMessage("  ")
+        STRING += "\n"
         }
     }
+    return STRING
   }
 
   shufflePlayedCards() {
