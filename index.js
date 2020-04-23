@@ -158,7 +158,7 @@ app.post('/testibule', (req, res) => {
     joinUserToGame(req.body)
   } else if(TOKENS[0] == "play") {
     play(req.body)
-  } else if(TOKENS[0] == "vote") {
+  } else if(TOKENS[0] == "select") {
     vote(req.body)
   } 
 })
