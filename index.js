@@ -338,7 +338,7 @@ class Game {
       this.USERS_SCORES[this.CURRENT_INDICES[CARD_INDEX]] += 1
 
       // PRINT SCORE BOARD
-      this.printScoreBoard()
+      this.sendMessage(this.printScoreBoard())
       
       // REMOVE THE PLAYED CARDS FROM DECK
       for(var i = 0; i < this.CURRENT_PLAYED_CARDS.length; i++) {
@@ -359,11 +359,13 @@ class Game {
   }
 
   printScoreBoard() {
-    this.sendMessage("  ")
+    var STRING = "SCOREBOARD\n"
     this.sendMessage("SCOREBOARD")
     for(var i = 0; i < this.NUMBER_OF_PLAYERS; i++) {
-      this.sendMessage(this.USERS[i]["payload"]["userName"] + " -> " + this.USERS_SCORES[i])
+      STRING += this.USERS[i]["payload"]["userName"] + " -> " + this.USERS_SCORES[i] + "\n"
     }
+    
+    return STRING
   }
 
   printPlayedCardsForAll() {
