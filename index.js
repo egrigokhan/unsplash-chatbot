@@ -51,9 +51,6 @@ function createGame(BODY) {
     TOKENS = BODY.payload.cmd.split(" ") // /start <NUMBER OF PLAYERS>
 
     GAME = new Game(TOKENS[1], BODY);
-
-    // JOIN THE CREATING USER TO THE GAME
-    GAME.join(BODY)
   }
 }
 
