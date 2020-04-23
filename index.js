@@ -88,7 +88,7 @@ function vote(BODY) {
     TOKENS = BODY.payload.cmd.split(" ") // /vote <DECK 1 INDEX> ... 
 
     // JOIN THE CREATING USER TO THE GAME
-    GAME.voteFunniest(TOKENS[1], BODY.payload)
+    GAME.voteFunniest(TOKENS[1], BODY)
   }
 }
 
