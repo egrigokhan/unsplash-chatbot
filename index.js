@@ -328,7 +328,7 @@ class Game {
 
       var WINNING_PLAYER = this.USERS[this.CURRENT_INDICES[CARD_INDEX]]
 
-      this.sendMessage("POINT -> " + WINNING_PLAYER["payload"])
+      this.sendMessage("POINT -> " + WINNING_PLAYER["payload"]["userName"])
 
       this.USERS_SCORES[this.CURRENT_INDICES[CARD_INDEX]] += 1
 
