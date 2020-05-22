@@ -364,7 +364,7 @@ class Game {
   }
 
   printPlayedCardsForAll() {
-    STRING = "PLAYED CARDS\n"
+    var STRING = "PLAYED CARDS\n"
     for(var i = 0; i < this.CURRENT_PLAYED_CARDS.length; i++) {
       if(this.CURRENT_INDICES[i] != this.CURRENT_CZAR_INDEX) {
         for(var j = 0; j < this.CURRENT_PLAYED_CARDS[i].length; j++) {
